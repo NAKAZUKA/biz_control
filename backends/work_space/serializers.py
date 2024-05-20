@@ -3,6 +3,8 @@ from .models import WorkSpace
 
 
 class WorkSpaceSerializer(serializers.ModelSerializer):
+    director_name = serializers.SerializerMethodField()
+
     class Meta:
         model = WorkSpace
         fields = '__all__'
@@ -22,3 +24,9 @@ class WorkSpaceSerializer(serializers.ModelSerializer):
             setattr(instance, attr, value)
         instance.save()
         return instance
+
+    def get_director_name(self, obj):
+        if obj.director:
+            return obj.director.username
+        else:
+            return None
