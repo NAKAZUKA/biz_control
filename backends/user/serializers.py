@@ -3,9 +3,22 @@ from .models import CustomUser
 
 
 class CustomUserSerializer(serializers.ModelSerializer):
+    work_space_name = serializers.SerializerMethodField()
+
     class Meta:
         model = CustomUser
-        fields = ['id', 'username', 'password', 'email', 'first_name', 'last_name', 'phone_number', 'role', 'specialty', 'position']
+        fields = ['id',
+                  'username',
+                  'password',
+                  'email',
+                  'first_name',
+                  'last_name',
+                  'phone_number',
+                  'role',
+                  'specialty',
+                  'position',
+                  'workspaces',
+                  'work_space_name']
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
@@ -20,3 +33,9 @@ class CustomUserSerializer(serializers.ModelSerializer):
                 setattr(instance, attr, value)
         instance.save()
         return instance
+
+    def get_work_space_name(self, obj):
+        if obj.workspaces:
+            return obj.workspaces.title
+        else:
+            return None

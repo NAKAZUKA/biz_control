@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from work_space.models import WorkSpace
 
 
 class CustomUser(AbstractUser):
@@ -34,6 +35,12 @@ class CustomUser(AbstractUser):
                                 blank=True,
                                 null=True,
                                 verbose_name='Должность')
+    workspaces = models.ForeignKey(WorkSpace,
+                                   related_name='users',
+                                   null=True,
+                                   blank=True,
+                                   on_delete=models.SET_NULL,
+                                   verbose_name='Место работы')
 
     class Meta:
         verbose_name = 'user'
