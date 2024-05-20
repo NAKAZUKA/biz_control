@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     # apps
     'user.apps.UserConfig',
     'work_space.apps.WorkSpaceConfig',
+    'product.apps.ProductConfig',
 ]
 
 
