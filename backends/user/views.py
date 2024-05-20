@@ -1,12 +1,8 @@
 from rest_framework import viewsets
-from rest_framework.permissions import BasePermission, AllowAny
+from rest_framework.permissions import AllowAny
 from .models import CustomUser
 from .serializers import CustomUserSerializer
-
-
-class IsOwnerOrAdmin(BasePermission):
-    def has_object_permission(self, request, view, obj):
-        return obj == request.user or request.user.is_staff
+from .permissions import IsOwnerOrAdmin
 
 
 class CustomUserViewSet(viewsets.ModelViewSet):
