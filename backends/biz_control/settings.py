@@ -26,10 +26,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # libraries
     'rest_framework',
     'rest_framework_simplejwt',
     'drf_yasg',
+
+    # apps
     'user.apps.UserConfig',
+    'work_space.apps.WorkSpaceConfig',
 ]
 
 
