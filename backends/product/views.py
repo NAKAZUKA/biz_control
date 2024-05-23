@@ -11,7 +11,11 @@ class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
 
     def get_permissions(self):
-        if self.action in ['create', 'update', 'partial_update', 'retrieve', 'destroy']:
+        if self.action in ['create',
+                           'update',
+                           'partial_update',
+                           'retrieve',
+                           'destroy']:
             return [IsOwnerOrAdminOrDirector()]
         return super().get_permissions()
 
@@ -21,7 +25,11 @@ class BrandViewSet(viewsets.ModelViewSet):
     serializer_class = BrandSerializer
 
     def get_permissions(self):
-        if self.action in ['create', 'update', 'partial_update', 'retrieve', 'destroy']:
+        if self.action in ['create',
+                           'update',
+                           'partial_update',
+                           'retrieve',
+                           'destroy']:
             return [IsAdminUser()]
         return super().get_permissions()
 
@@ -31,6 +39,10 @@ class CategoryViewSet(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
 
     def get_permissions(self):
-        if self.action in ['create', 'update', 'partial_update', 'retrieve', 'destroy']:
+        if self.action in ['create',
+                           'update',
+                           'partial_update',
+                           'retrieve',
+                           'destroy']:
             return [IsAdminUser()]
         return super().get_permissions()

@@ -30,7 +30,9 @@ class Product(models.Model):
 
 
 class Category(models.Model):
-    title = models.CharField(max_length=255, verbose_name='Название', unique=True)
+    title = models.CharField(max_length=255,
+                             verbose_name='Название',
+                             unique=True)
     description = models.CharField(max_length=255,
                                    null=True,
                                    blank=True,
@@ -41,7 +43,9 @@ class Category(models.Model):
 
 
 class Brand(models.Model):
-    title = models.CharField(max_length=255, verbose_name='Название', unique=True)
+    title = models.CharField(max_length=255,
+                             verbose_name='Название',
+                             unique=True)
     description = models.CharField(max_length=255,
                                    null=True,
                                    blank=True,
