@@ -10,7 +10,6 @@ class WorkSpaceSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def create(self, validated_data):
-        # Проверка прав доступа на уровне сериализатора
         user = self.context['request'].user
         if user.role not in ['admin', 'owner']:
             raise serializers.ValidationError(
